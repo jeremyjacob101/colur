@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changes w RealTime 8</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #f0f0f0;
+        }
+
+        h1,
+        h2 {
+            margin-top: 20px;
+        }
+
+        .color-square {
+            width: 1500px;
+            height: 550px;
+            background-color: #f0f0f0;
+        }
+
+        #clock {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        #rgb-value {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        #hex-value {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        #name-value {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        #color-change-timer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Colur</h1>
+    <div class="color-square"></div>
+    <div id="clock"></div>
+    <div id="rgb-value"></div>
+    <div id="hex-value"></div>
+    <div id="name-value"></div>
+    <div id="color-change-timer"></div>
+    <script src="/Users/jeremyjacob/Documents/Coding Projects/python1/CustomColorsTryV1.js"></script>
+    <script>
+        const square = document.querySelector('.color-square');
+        const rgbValueElement = document.getElementById('rgb-value');
+        const hexValueElement = document.getElementById('hex-value');
+        const nameValueElement = document.getElementById('name-value');
+
+        let currentColor = [255, 255, 0];
+        let lastColorChangeTime = new Date();
+
+        // function getColorName(rgb) {
+        //     for (const [color, variations] of Object.entries(customColors)) {
+        //         for (const variation of variations) {
+        //             if (rgb.every((value, index) => value == variation[index])) {
+        //                 return color;
+        //             }
+        //         }
+        //     }
+        //     return "Unknown";
+        // }
+
+        function closestColor(rgb, customColors) {
+            // var minDifference = Number.MAX_SAFE_INTEGER;
+            var minDifference = 255;
+            var closestColorName = null;
+
+            for (var colorName in customColors) {
+                if (customColors.hasOwnProperty(colorName)) {
+                    var colorRgb = customColors[colorName];
+                    var redR = colorRgb[0];
+                    var greenG = colorRgb[1];
+                    var blueB = colorRgb[2];
+
+                    var difference = calculateDifference(redR, greenG, blueB, rgb);
+
+                    if (difference < minDifference) {
+                        minDifference = difference;
+                        closestColorName = colorName;
+                    }
+                }
+            }
+
+            return closestColorName;
+        }
+
+        function calculateDifference(r, g, b, rgb) {
+            return Math.sqrt(Math.pow(r - rgb[0], 2) + Math.pow(g - rgb[1], 2) + Math.pow(b - rgb[2], 2));
+        }
+
+        function changeColorStandard256UD() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const milliseconds = now.getMilliseconds();
+
+            let red, green, blue;
+
+            if ((hours >= 0 && hours < 2) || (hours >= 12 && hours < 14)) {
+                red = 255;
+                green = Math.round((1 - (((hours % 2) * 3600) + (minutes * 60) + seconds) / 7200) * 255);
+                blue = 0;
+            } else if ((hours >= 2 && hours < 4) || (hours >= 14 && hours < 16)) {
+                red = 255;
+                green = 0;
+                blue = Math.round(((((hours % 2) * 3600) + (minutes * 60) + seconds) / 7200) * 255);
+            } else if ((hours >= 4 && hours < 6) || (hours >= 16 && hours < 18)) {
+                red = Math.round((1 - (((hours % 2) * 3600) + (minutes * 60) + seconds) / 7200) * 255);
+                green = 0;
+                blue = 255;
+            } else if ((hours >= 6 && hours < 8) || (hours >= 18 && hours < 20)) {
+                red = 0;
+                green = Math.round(((((hours % 2) * 3600) + (minutes * 60) + seconds) / 7200) * 255);
+                blue = 255;
+            } else if ((hours >= 8 && hours < 10) || (hours >= 20 && hours < 22)) {
+                red = 0;
+                green = 255;
+                blue = Math.round((1 - (((hours % 2) * 3600) + (minutes * 60) + seconds) / 7200) * 255);
+            } else {
+                red = Math.round(((((hours % 2) * 3600) + (minutes * 60) + seconds) / 7200) * 255);
+                green = 255;
+                blue = 0;
+            }
+
+            const newColor = [red, green, blue];
+
+            // Update the current color only if it changes
+            if (!currentColor.every((value, index) => value === newColor[index])) {
+                currentColor = newColor;
+
+                // Example usage:
+                var rgbToFind = currentColor;
+                var closestColorName = closestColor(rgbToFind, customColors);
+
+                console.log('Closest Color:', closestColorName);
+
+                square.style.backgroundColor = `rgb(${currentColor.join(',')})`;
+                rgbValueElement.innerText = `RGB: ${currentColor.join(', ')}`;
+                hexValueElement.innerText = `HEX: ${rgbToHex(currentColor)}`;
+                nameValueElement.innerText = `NAME: ${closestColor(currentColor, customColors)}`;
+                lastColorChangeTime = now; // Update the last color change time
+            }
+
+        }
+
+        function rgbToHex(rgb) {
+            return '#' + rgb.map(value => value.toString(16).padStart(2, '0')).join('').toUpperCase();
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+        }
+
+        function updateColorChangeTimer() {
+            const currentTime = new Date();
+            const elapsedTime = currentTime - lastColorChangeTime;
+            const seconds = Math.floor(elapsedTime / 1000);
+            const milliseconds = elapsedTime % 1000;
+            const timerElement = document.getElementById('color-change-timer');
+            timerElement.innerText = `Time since last color change: ${seconds}.${Math.floor(milliseconds / 100)} seconds`;
+        }
+
+        setInterval(changeColorStandard256UD, 1); // Change color every .001 second
+        setInterval(updateClock, 1);
+        setInterval(updateColorChangeTimer, 1);
+        updateClock();
+    </script>
+</body>
+
+</html>
