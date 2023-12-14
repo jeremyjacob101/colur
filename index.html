@@ -128,7 +128,7 @@
             const seconds = Math.floor(elapsedTime / 1000);
             const milliseconds = elapsedTime % 1000;
             const timerElement = document.getElementById('color-change-timer');
-            timerElement.innerText = `Time since last color change: ${seconds}.${Math.floor(milliseconds / 100)} seconds`;
+            timerElement.innerText = `${seconds}.${Math.floor(milliseconds / 100)} seconds`;
         }
 
         setInterval(changeColor, 1); // Change color every .001 second
