@@ -22,8 +22,11 @@
         }
 
         .color-square {
-            width: 1500px;
-            height: 550px;
+            width: 100%;
+            /* 1500px */
+            height: 400px;
+            /* margin: 0; */
+            /* padding: 0; */
             background-color: #f0f0f0;
         }
 
@@ -64,7 +67,7 @@
     <div id="hex-value"></div>
     <div id="name-value"></div>
     <div id="color-change-timer"></div>
-    <script src="./colorslist.js"></script>
+    <script src="/Users/jeremyjacob/Documents/Coding Projects/Color Time/python1-1/CustomColorsTryV1.js"></script>
     <script>
         const square = document.querySelector('.color-square');
         const rgbValueElement = document.getElementById('rgb-value');
@@ -74,30 +77,18 @@
         let currentColor = [255, 255, 0];
         let lastColorChangeTime = new Date();
 
-        // function getColorName(rgb) {
-        //     for (const [color, variations] of Object.entries(customColors)) {
-        //         for (const variation of variations) {
-        //             if (rgb.every((value, index) => value == variation[index])) {
-        //                 return color;
-        //             }
-        //         }
-        //     }
-        //     return "Unknown";
-        // }
-
         function closestColor(rgb, customColors) {
-            // var minDifference = Number.MAX_SAFE_INTEGER;
-            var minDifference = 255;
-            var closestColorName = null;
+            let minDifference = 255; // var minDifference = Number.MAX_SAFE_INTEGER;
+            let closestColorName = null;
 
-            for (var colorName in customColors) {
+            for (let colorName in customColors) {
                 if (customColors.hasOwnProperty(colorName)) {
-                    var colorRgb = customColors[colorName];
-                    var redR = colorRgb[0];
-                    var greenG = colorRgb[1];
-                    var blueB = colorRgb[2];
+                    let colorRgb = customColors[colorName];
+                    let redR = colorRgb[0];
+                    let greenG = colorRgb[1];
+                    let blueB = colorRgb[2];
 
-                    var difference = calculateDifference(redR, greenG, blueB, rgb);
+                    let difference = calculateDifference(redR, greenG, blueB, rgb);
 
                     if (difference < minDifference) {
                         minDifference = difference;
@@ -155,8 +146,8 @@
                 currentColor = newColor;
 
                 // Example usage:
-                var rgbToFind = currentColor;
-                var closestColorName = closestColor(rgbToFind, customColors);
+                let rgbToFind = currentColor;
+                let closestColorName = closestColor(rgbToFind, customColors);
 
                 console.log('Closest Color:', closestColorName);
 
@@ -164,7 +155,7 @@
                 rgbValueElement.innerText = `RGB: ${currentColor.join(', ')}`;
                 hexValueElement.innerText = `HEX: ${rgbToHex(currentColor)}`;
                 nameValueElement.innerText = `NAME: ${closestColor(currentColor, customColors)}`;
-                lastColorChangeTime = now; // Update the last color change time
+                lastColorChangeTime = now;
             }
 
         }
