@@ -84,13 +84,13 @@
         let currentColor = [255, 255, 0];
         let lastColorChangeTime = new Date();
 
-        function closestColor(rgb, customColors) {
+        function closestColor(rgb, custom_colors) {
             let minDifference = 255; // var minDifference = Number.MAX_SAFE_INTEGER;
             let closestColorName = null;
 
-            for (let colorName in customColors) {
-                if (customColors.hasOwnProperty(colorName)) {
-                    let colorRgb = customColors[colorName];
+            for (let colorName in custom_colors) {
+                if (custom_colors.hasOwnProperty(colorName)) {
+                    let colorRgb = custom_colors[colorName];
                     let redR = colorRgb[0];
                     let greenG = colorRgb[1];
                     let blueB = colorRgb[2];
