@@ -74,14 +74,14 @@
     <div id="color-change-timer"></div>
     <script src="./UsingThisPRESENTCustomColorsTryV1.js"></script>
     <script 
-        src="./rgbFunc-Standard256UDV1-1.js"></script>
+        src="./rgbFunc-Standard192UDV1-1.js"></script>
     <script>
         const square = document.querySelector('.color-square');
         const rgbValueElement = document.getElementById('rgb-value');
         const hexValueElement = document.getElementById('hex-value');
         const nameValueElement = document.getElementById('name-value');
 
-        let currentColor = [255, 255, 0];
+        let currentColor = [255, 255, 255];
         let lastColorChangeTime = new Date();
 
         function closestColor(rgb, custom_colors) {
