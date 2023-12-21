@@ -41,14 +41,14 @@ function changeColor() {
 
         // Example usage:
         let rgbToFind = currentColor;
-        let closestColorName = closestColor(rgbToFind, customColors);
+        let closestColorName = closestColor(rgbToFind, custom_colors);
 
         console.log('Closest Color:', closestColorName);
 
         square.style.backgroundColor = `rgb(${currentColor.join(',')})`;
         rgbValueElement.innerText = `RGB: ${currentColor.join(', ')}`;
         hexValueElement.innerText = `HEX: ${rgbToHex(currentColor)}`;
-        nameValueElement.innerText = `NAME: ${closestColor(currentColor, customColors)}`;
+        nameValueElement.innerText = `NAME: ${closestColor(currentColor, custom_colors)}`;
         lastColorChangeTime = now;
     }
 }
