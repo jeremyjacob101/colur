@@ -1,3 +1,6 @@
+// rgbFunc-Standard192UDV1-1.js
+// renamed to colorFunction.js for clarity
+
 function changeColor() {
     const now = new Date();
     const hours = now.getHours();
