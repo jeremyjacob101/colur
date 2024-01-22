@@ -52,7 +52,7 @@ function changeColor() {
         square.style.backgroundColor = `rgb(${currentColor.join(',')})`;
         rgbValueElement.innerText = `RGB: ${currentColor.join(', ')}`;
         hexValueElement.innerText = `HEX: ${rgbToHex(currentColor)}`;
-        nameValueElement.innerText = `NAME: ${closestColor(currentColor, custom_colors)}`;
+        nameValueElement.innerText = `${closestColor(currentColor, custom_colors)}`;
         lastColorChangeTime = now;
     }
 }
