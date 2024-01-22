@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon"
-    href="./favicon.ico"
-    type="image/x-icon" />
-<link rel="shortcut icon"
-    href="./favicon.ico"
-    type="image/x-icon" />
+    <link rel="icon"
+        href="./favicon.ico"
+        type="image/x-icon" />
+    <link rel="shortcut icon"
+        href="./favicon.ico"
+        type="image/x-icon" />
     
     <title>Colur</title>
 
@@ -28,20 +28,40 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: top;
+            justify-content: space-between;
             position: fixed;
             left: 0;
             top: 0;
         }
 
+        .top-options {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: top;
+        }
+
+        .bottom-options {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: bottom;
+        }
+
         .menu-option {
             color: white;
             font-size: 18px;
-            margin-top: 30px;
             cursor: pointer;
             background-color: #555;
             border-radius: 10px;
             padding: 8px;
+            transition: color 0.5s ease;
+            margin-top: 15px;
+            margin-bottom: 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .menu-option:hover {
@@ -50,10 +70,30 @@
 
         .content {
             flex: 1;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: top;
+            justify-content: space-between;
+        }
+
+        .top-content {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: auto;
+            /* Push the content to the top */
+        }
+
+        .bottom-banner {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            color: transparent;
+            margin-top: auto;
+            /* Push the banner to the bottom */
         }
 
         h1 {
@@ -70,15 +110,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: top;
             margin-top: 5px;
         }
 
         .color-square {
             position: relative;
             width: 85%;
-            height: 400px;
+            height: 375px;
             margin: 0 auto;
-            background-color: #f0f0f0;
+            background-color: #000000;
             border-radius: 40px;
             border: 7px solid #4f4b4b;
         }
@@ -96,129 +137,227 @@
 
         #clock {
             font-size: 50px;
-            margin-top: 25px;
+            margin-top: 30px;
             color: white;
             margin-left: auto;
             margin-right: auto;
             text-align: center;
+            font-family: "Garamond", sans-serif;
         }
 
         #rgb-value {
             margin-top: 30px;
             font-size: 18px;
             color: white;
+            font-family: "Garamond", sans-serif;
         }
 
         #hex-value {
             margin-top: 10px;
+            margin-bottom: 10px;
             font-size: 18px;
             color: white;
+            font-family: "Garamond", sans-serif;
         }
 
         #color-change-timer {
-            position: fixed;
             bottom: 10px;
             right: 10px;
             font-size: 14px;
             color: white;
+            font-family: "Garamond", sans-serif;
+            margin-right: 1vh;
+            margin-bottom: 1vh;
         }
 
         .copyright-notice {
-            position: fixed;
             bottom: 10px;
             left: 90px;
             color: white;
             font-size: 14px;
+            font-family: "Garamond", sans-serif;
+            margin-left: 9vh;
+            margin-bottom: 1vh;
         }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-container img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .analogClock {
+            width: 20vh;
+            height: 20vh;
+            border: 3px solid #f0f0f0;
+            border-radius: 50%;
+            margin: 50px auto;
+            position: relative;
+            padding: 5vh;
+        }
+
+        .hand {
+            width: 50%;
+            right: 50%;
+            top: 50%;
+            background: white;
+            position: absolute;
+            border-radius: 35%;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+            transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+        }
+
+        .hour-hand {
+            width: 23%;
+            height: .45vh;
+        }
+
+        .min-hand {
+            width: 37%;
+            height: .45vh;
+        }
+
+        .second-hand {
+            width: 43%;
+            height: .45vh;
+        }
     </style>
+    
 </head>
 
 <body>
     <div class="menu-bar">
-        <div class="menu-option">Home</div>
-        <div class="menu-option">Tools</div>
-        <div class="menu-option">Soon</div>
+        <div class="top-options">
+            <div class="menu-option">Home</div>
+            <div class="menu-option">Tools</div>
+            <div class="menu-option">Soon...</div>
+        </div>
+        <div class="bottom-options">
+            <div class="menu-option">Contact</div>
+            <div class="logo-container">
+                <img src="./android-chrome-512x512.png"
+                    alt="Favicon">
+            </div>
+        </div>
     </div>
     <div class="content">
-        <h1>Colur</h1>
-        <div class="container">
-            <div class="color-square">
-                <div id="name-value"></div>
+        <div class="top-content">
+            <h1>Colur</h1>
+            <div class="container">
+                <div class="color-square">
+                    <div class="analogClock">
+                        <div class="hand hour-hand"></div>
+                        <div class="hand min-hand"></div>
+                        <div class="hand second-hand"></div>
+                    </div>
+                    <div id="name-value"></div>
+                </div>
+                <div id="clock"></div>
+                <div id="rgb-value"></div>
+                <div id="hex-value"></div>
             </div>
-            <div id="clock"></div>
-            <div id="rgb-value"></div>
-            <div id="hex-value"></div>
         </div>
-        <div id="color-change-timer"></div>
-        <div class="copyright-notice">
-            &copy; 2024 ColurTime. All rights reserved.
+        <div class="bottom-banner">
+            <div class="copyright-notice">
+                &copy; 2024 ColurTime &ndash; All rights reserved
+            </div>
+            <div id="color-change-timer"></div>
         </div>
     <script src="./UsingThisPRESENTCustomColorsTryV1.js"></script>
     <script 
         src="./rgbFunc-Standard192UDV1-1.js"></script>
     <script>
-        const square = document.querySelector('.color-square');
-        const rgbValueElement = document.getElementById('rgb-value');
-        const hexValueElement = document.getElementById('hex-value');
-        const nameValueElement = document.getElementById('name-value');
+            const square = document.querySelector('.color-square');
+            const rgbValueElement = document.getElementById('rgb-value');
+            const hexValueElement = document.getElementById('hex-value');
+            const nameValueElement = document.getElementById('name-value');
 
-        let currentColor = [255, 255, 255];
-        let lastColorChangeTime = new Date();
+            let currentColor = [255, 255, 255];
+            let lastColorChangeTime = new Date();
 
-        function closestColor(rgb, custom_colors) {
-            let minDifference = 255; // var minDifference = Number.MAX_SAFE_INTEGER;
-            let closestColorName = null;
+            function closestColor(rgb, custom_colors) {
+                let minDifference = 255;
+                let closestColorName = null;
 
-            for (let colorName in custom_colors) {
-                if (custom_colors.hasOwnProperty(colorName)) {
-                    let colorRgb = custom_colors[colorName];
-                    let redR = colorRgb[0];
-                    let greenG = colorRgb[1];
-                    let blueB = colorRgb[2];
+                for (let colorName in custom_colors) {
+                    if (custom_colors.hasOwnProperty(colorName)) {
+                        let colorRgb = custom_colors[colorName];
+                        let redR = colorRgb[0];
+                        let greenG = colorRgb[1];
+                        let blueB = colorRgb[2];
 
-                    let difference = calculateDifference(redR, greenG, blueB, rgb);
+                        let difference = calculateDifference(redR, greenG, blueB, rgb);
 
-                    if (difference < minDifference) {
-                        minDifference = difference;
-                        closestColorName = colorName;
+                        if (difference < minDifference) {
+                            minDifference = difference;
+                            closestColorName = colorName;
+                        }
                     }
                 }
+
+                return closestColorName;
             }
 
-            return closestColorName;
-        }
+            function calculateDifference(r, g, b, rgb) {
+                return Math.sqrt(Math.pow(r - rgb[0], 2) + Math.pow(g - rgb[1], 2) + Math.pow(b - rgb[2], 2));
+            }
 
-        function calculateDifference(r, g, b, rgb) {
-            return Math.sqrt(Math.pow(r - rgb[0], 2) + Math.pow(g - rgb[1], 2) + Math.pow(b - rgb[2], 2));
-        }
+            function rgbToHex(rgb) {
+                return '#' + rgb.map(value => value.toString(16).padStart(2, '0')).join('').toUpperCase();
+            }
 
-        function rgbToHex(rgb) {
-            return '#' + rgb.map(value => value.toString(16).padStart(2, '0')).join('').toUpperCase();
-        }
+            function updateClock() {
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+                document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+            }
 
-        function updateClock() {
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
-            document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
-        }
+            function updateColorChangeTimer() {
+                const currentTime = new Date();
+                const elapsedTime = currentTime - lastColorChangeTime;
+                const seconds = Math.floor(elapsedTime / 1000);
+                const milliseconds = elapsedTime % 1000;
+                const timerElement = document.getElementById('color-change-timer');
+                timerElement.innerText = `${seconds}.${Math.floor(milliseconds / 100)} seconds`;
+            }
 
-        function updateColorChangeTimer() {
-            const currentTime = new Date();
-            const elapsedTime = currentTime - lastColorChangeTime;
-            const seconds = Math.floor(elapsedTime / 1000);
-            const milliseconds = elapsedTime % 1000;
-            const timerElement = document.getElementById('color-change-timer');
-            timerElement.innerText = `${seconds}.${Math.floor(milliseconds / 100)} seconds`;
-        }
+            const secondHand = document.querySelector('.second-hand');
+            const minsHand = document.querySelector('.min-hand');
+            const hourHand = document.querySelector('.hour-hand');
 
-        setInterval(changeColor, 10); // Change color every .001 second
-        setInterval(updateClock, 50);
-        setInterval(updateColorChangeTimer, 50);
-        updateClock();
-    </script>
+            function setAnalogClock() {
+                const now = new Date();
+
+                const seconds = now.getSeconds();
+                const secondsDegrees = ((seconds / 60) * 360) + 90;
+                secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+                const mins = now.getMinutes();
+                const minsDegrees = ((mins / 60) * 360) + ((seconds / 60) * 6) + 90;
+                minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+                const hour = now.getHours();
+                const hourDegrees = ((hour / 12) * 360) + ((mins / 60) * 30) + 90;
+                hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+            }
+
+            setInterval(changeColor, 50); // Change every .01 second
+            setInterval(updateClock, 50);
+            setInterval(updateColorChangeTimer, 50);
+            setInterval(setAnalogClock, 50);
+            setAnalogClock();
+            updateClock();
+        </script>
+        </main>
 </body>
 
 </html>
