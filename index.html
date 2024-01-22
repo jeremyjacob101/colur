@@ -4,12 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon"
-        href="./ColurNewLogo.png"
-        type="image/x-icon" />
-    <link rel="shortcut icon"
-        href="./ColurNewLogo.png"
-        type="image/x-icon" />
+    <link rel="icon" href="./ColurNewLogo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./ColurNewLogo.png" type="image/x-icon" />
     
     <title>Colur</title>
 
@@ -242,7 +238,7 @@
         <div class="bottom-options">
             <div class="menu-option">Contact</div>
             <div class="logo-container">
-                <img src="./ColurNewLogo.png"                    
+                <img src="./logo.png"                    
                     alt="Favicon">
             </div>
         </div>
@@ -270,9 +266,9 @@
             </div>
             <div id="color-change-timer"></div>
         </div>
-    <script src="./UsingThisPRESENTCustomColorsTryV1.js"></script>
+    <script src="./colorsList.js"></script>
     <script 
-        src="./rgbFunc-Standard192UDV1-1.js"></script>
+        src="./colorFunction"></script>
     <script>
             const square = document.querySelector('.color-square');
             const rgbValueElement = document.getElementById('rgb-value');
@@ -350,7 +346,7 @@
                 hourHand.style.transform = `rotate(${hourDegrees}deg)`;
             }
 
-            setInterval(changeColor, 50); // Change every .01 second
+            setInterval(changeColor, 50); // Change every .05 second
             setInterval(updateClock, 50);
             setInterval(updateColorChangeTimer, 50);
             setInterval(setAnalogClock, 50);
