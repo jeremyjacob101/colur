@@ -7,8 +7,8 @@ function changeColor() {
 
     let red, green, blue;
 
-    let rgbLow = 192;
-    let rgbHigh = 255;
+    let rgbLow = 40; // 192
+    let rgbHigh = 155; // 255
     let rgbMultiplier = ((rgbHigh + 1) - rgbLow);
 
     if ((hours >= 0 && hours < 2) || (hours >= 12 && hours < 14)) {
