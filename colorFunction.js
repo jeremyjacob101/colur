@@ -53,7 +53,7 @@ function changeColor() {
         console.log('Closest Color:', closestColorName);
 
         square.style.backgroundColor = `rgb(${currentColor.join(',')})`;
-        rgbValueElement.innerText = `RGB: ${currentColor.join(', ')}`;
+        rgbValueElement.innerText = `RGB: (${currentColor.join(', ')})`;
         hexValueElement.innerText = `HEX: ${rgbToHex(currentColor)}`;
         nameValueElement.innerText = `${closestColor(currentColor, custom_colors)}`;
         lastColorChangeTime = now;
