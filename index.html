@@ -14,7 +14,7 @@
             margin: 0;
             height: 100vh;
             display: flex;
-            background-image: linear-gradient(50deg, #070707, #0a024b, #3a1546);
+            background-image: linear-gradient(90deg, #070707, #0a024b, #3a1546);
         }
 
         .menu-bar {
@@ -28,6 +28,7 @@
             position: fixed;
             left: 0;
             top: 0;
+            z-index: 2;
         }
 
         .top-options {
@@ -79,7 +80,6 @@
             flex-direction: column;
             align-items: center;
             margin-bottom: auto;
-            /* Push the content to the top */
         }
 
         .bottom-banner {
@@ -89,10 +89,10 @@
             justify-content: space-between;
             color: transparent;
             margin-top: auto;
-            /* Push the banner to the bottom */
+            position: relative;
         }
 
-        h1 {
+        .top-content h1 {
             margin-top: 40px;
             font-size: 50px;
             color: transparent;
@@ -157,23 +157,23 @@
         }
 
         #color-change-timer {
-            bottom: 10px;
-            right: 10px;
             font-size: 14px;
             color: white;
             font-family: "Garamond", sans-serif;
+            margin-left: auto;
             margin-right: 1vh;
             margin-bottom: 1vh;
         }
 
         .copyright-notice {
-            bottom: 10px;
-            left: 90px;
+            position: absolute;
             color: white;
             font-size: 14px;
             font-family: "Garamond", sans-serif;
             margin-left: 11vh;
-            margin-bottom: 1vh;
+            /* margin-bottom: 1vh; */
+            z-index: 2;
+            bottom: 1vh;
         }
 
         .logo-container {
@@ -216,7 +216,7 @@
         }
 
         .hour-hand {
-            width: 23%;
+            width: 22%;
             /* height: .45vh; */
             height: 1.6%;
         }
@@ -233,14 +233,14 @@
             height: 1.6%;
         }
 
-        .tools-option:hover .sub-menu {
+        /* .tools-option:hover .sub-menu {
             display: flex;
             flex-direction: column;
             position: absolute;
             top: -7px;
             left: 100%;
             z-index: 1;
-        }
+        } */
 
         .tools-option {
             position: relative;
@@ -273,43 +273,202 @@
         .hidden {
             display: none;
         }
+
+        /* .about-section {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            background-color: #ffff00;
+            margin-left: 5vh;
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+
+            height: 100vh;
+            width: 91%;
+        } */
+
+        .about-section {
+            /* display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: auto;
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+            overflow-y: auto; */
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            z-index: 1;
+        }
+
+        .about-section h1 {
+            /* margin-bottom: 40px;
+            margin-top: 50px; */
+            font-size: 75px;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(to right, #ff8a00, #e52e71, #fa3939);
+            margin-bottom: 25px;
+            z-index: 1;
+        }
+
+        .about-section p {
+            /* margin-top: -15px;
+            font-size: 20px; */
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .contact-section {
+            /* display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: auto;
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+            overflow-y: auto; */
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            z-index: 1;
+        }
+
+        .contact-section h1 {
+            /* margin-bottom: 40px;
+            margin-top: 50px; */
+            font-size: 75px;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(to right, #ff8a00, #e52e71, #fa3939);
+            margin-bottom: 25px;
+            z-index: 1;
+        }
+
+        .contact-section p {
+            /* margin-top: -15px;
+            font-size: 20px; */
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .features-section {
+            /* display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: auto;
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+            overflow-y: auto; */
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            z-index: 1;
+        }
+
+        .features-section h1 {
+            /* margin-bottom: 40px;
+            margin-top: 50px; */
+            font-size: 75px;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(to right, #ff8a00, #e52e71, #fa3939);
+            margin-bottom: 25px;
+            z-index: 1;
+        }
+
+        .features-section p {
+            /* margin-top: -15px;
+            font-size: 20px; */
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .sub-menu {
+            display: none;
+            background-color: #444;
+            border-radius: 1vh;
+            padding: 5px;
+        }
+
+        .sub-menu.show {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: -7px;
+            left: 100%;
+            z-index: 1;
+        }
     </style>
 </head>
-    
+
 <body>
     <div class="menu-bar">
         <div class="top-options">
             <div class="logo-container">
                 <a href="https://colur.org">
-                    <img src="./logo.png" alt="Favicon">
+                    <img src="../zz misc/newLogo images/ColurNewLogo.png" alt="Favicon">
                 </a>
             </div>
-            <div class="menu-option tools-option">
+            <div class="menu-option" onclick="goToHome()">Home</div>
+            <div class="menu-option tools-option" onclick="toggleSubMenu()" onmouseover="showSubMenu()"
+                onmouseleave="hideSubMenu()">
                 Tools
-                <div class="sub-menu">
+                <div class="sub-menu" id="sub-menu">
                     <div class="sub-menu-option" onclick="toggleRGBVisibility()">Toggle RGB</div>
                     <div class="sub-menu-option" onclick="toggleHEXVisibility()">Toggle HEX</div>
                 </div>
             </div>
-            <div class="menu-option">Colors</div>
-            
-            <!-- <ul>
-                <li><a href="#">Main link</a>
-                    <ul>
-                        <li><a href="#">Sublink</a></li>
-                        <li><a href="#">Sublink</a></li>
-                        <li><a href="#">Sublink</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Main link</a></li>
-                <li><a href="#">Main link</a></li>
-            </ul> -->
-
+            <div class="menu-option" onclick="showFeaturesSection()">Features</div>
         </div>
         <div class="bottom-options">
-            <div class="menu-option">About</div>
-            <div class="menu-option">Features</div>
-            <div class="menu-option">Contact</div>
+            <div class="menu-option" onclick="showAboutSection()">About</div>
+            <div class="menu-option" onclick="showContactSection()">Contact</div>
         </div>
     </div>
     <div class="content">
@@ -334,6 +493,25 @@
                 &copy; 2024 ColurTime &ndash; All rights reserved
             </div>
             <div id="color-change-timer"></div>
+        </div>
+        <div class="about-section">
+            <h1>Colur</h1>
+            <p>We need to move past numbered time</p>
+            <p>A new way to see the world</p>
+            <p>Welcome to ColurTime</p>
+        </div>
+        <div class="contact-section">
+            <h1>Colur</h1>
+            <p>Have a feature request?</p>
+            <p>Want to contact the team?</p>
+            <p></p>
+            <p>Soon you'll be able to leave feedback!</p>
+        </div>
+        <div class="features-section">
+            <h1>Colur</h1>
+            <p>Here, you will soon be able to choose your own color wheels</p>
+            <p>and edit your own color gradients</p>
+            </p>
         </div>
     <script src="./colorList.js"></script>
     <script src="./colorFunction.js"></script>
@@ -419,14 +597,66 @@
                 rgbValueElement.classList.toggle('hidden');
             }
             function toggleHEXVisibility() {
-                const rgbValueElement = document.getElementById('hex-value');
-                rgbValueElement.classList.toggle('hidden');
+                const hexValueElement = document.getElementById('hex-value');
+                hexValueElement.classList.toggle('hidden');
+            }
+
+            function toggleSubMenu() {
+                const subMenu = document.getElementById('sub-menu');
+                subMenu.classList.toggle('show');
+            }
+
+            function showSubMenu() {
+                const subMenu = document.getElementById('sub-menu');
+                subMenu.classList.add('show');
+            }
+
+            function hideSubMenu() {
+                const subMenu = document.getElementById('sub-menu');
+                subMenu.classList.remove('show');
+            }
+
+            function showAboutSection() {
+                document.querySelector('.top-content').style.display = 'none';
+                document.querySelector('.bottom-banner').style.display = 'none';
+                document.querySelector('.about-section').style.display = 'flex';
+                document.querySelector('.contact-section').style.display = 'none';
+                document.querySelector('.features-section').style.display = 'none';
+            }
+
+            function showContactSection() {
+                document.querySelector('.top-content').style.display = 'none';
+                document.querySelector('.bottom-banner').style.display = 'none';
+                document.querySelector('.about-section').style.display = 'none';
+                document.querySelector('.contact-section').style.display = 'flex';
+                document.querySelector('.features-section').style.display = 'none';
+            }
+
+            function showFeaturesSection() {
+                document.querySelector('.top-content').style.display = 'none';
+                document.querySelector('.bottom-banner').style.display = 'none';
+                document.querySelector('.about-section').style.display = 'none';
+                document.querySelector('.contact-section').style.display = 'none';
+                document.querySelector('.features-section').style.display = 'flex';
+            }
+
+
+            function goToHome() {
+                document.querySelector('.top-content').style.display = 'flex';
+                document.querySelector('.bottom-banner').style.display = 'flex';
+                document.querySelector('.about-section').style.display = 'none';
+                document.querySelector('.contact-section').style.display = 'none';
+                document.querySelector('.features-section').style.display = 'none';
+                const rgbValueElement = document.getElementById('rgb-value');
+                rgbValueElement.classList.add('hidden'); // to add the class
+                const hexValueElement = document.getElementById('hex-value');
+                hexValueElement.classList.add('hidden');
             }
 
             setInterval(changeColor, 50); // Change every .05 second
-            setInterval(updateClock, 50);
-            setInterval(updateColorChangeTimer, 50);
-            setInterval(setAnalogClock, 50);
+            setInterval(updateClock, 50); // Change every .05 second
+            setInterval(updateColorChangeTimer, 50); // Change every .05 second
+            setInterval(setAnalogClock, 50); // Change every .05 second
             setAnalogClock();
             updateClock();
         </script>
