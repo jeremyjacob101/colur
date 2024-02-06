@@ -18,7 +18,7 @@
         }
 
         .menu-bar {
-            width: 8vh;
+            width: 10vh;
             height: 100%;
             background-color: #333;
             display: flex;
@@ -31,14 +31,14 @@
         }
 
         .top-options {
-            margin-top: 15px;
+            margin-top: 22px;
             display: flex;
             flex-direction: column;
             justify-content: top;
         }
 
         .bottom-options {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             flex-direction: column;
             justify-content: bottom;
@@ -49,11 +49,11 @@
             font-size: 18px;
             cursor: pointer;
             background-color: #555;
-            border-radius: 10px;
+            border-radius: 1vh;
             padding: 8px;
             transition: color 0.5s ease;
-            margin-top: 15px;
-            margin-bottom: 15px;
+            margin-top: 5px;
+            margin-bottom: 5px;
 
             display: flex;
             align-items: center;
@@ -137,12 +137,12 @@
             color: white;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 3vh;
             text-align: center;
             font-family: "Garamond", sans-serif;
         }
 
         #rgb-value {
-            margin-top: 30px;
             font-size: 18px;
             color: white;
             font-family: "Garamond", sans-serif;
@@ -172,7 +172,7 @@
             color: white;
             font-size: 14px;
             font-family: "Garamond", sans-serif;
-            margin-left: 9vh;
+            margin-left: 11vh;
             margin-bottom: 1vh;
         }
 
@@ -180,6 +180,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-container img:hover {
+            cursor: pointer;
         }
 
         .logo-container img {
@@ -189,11 +194,11 @@
         }
 
         .analogClock {
-            width: 20vh;
-            height: 20vh;
+            width: 15vh;
+            height: 15vh;
             border: 3px solid #f0f0f0;
             border-radius: 50%;
-            margin: 50px auto;
+            margin: 60px auto;
             position: relative;
             padding: 5vh;
         }
@@ -212,35 +217,101 @@
 
         .hour-hand {
             width: 23%;
-            height: .45vh;
+            /* height: .45vh; */
+            height: 1.6%;
         }
 
         .min-hand {
-            width: 37%;
-            height: .45vh;
+            width: 36%;
+            /* height: .45vh; */
+            height: 1.6%;
         }
 
         .second-hand {
             width: 43%;
-            height: .45vh;
+            /* height: .45vh; */
+            height: 1.6%;
+        }
+
+        .tools-option:hover .sub-menu {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: -7px;
+            left: 100%;
+            z-index: 1;
+        }
+
+        .tools-option {
+            position: relative;
+        }
+
+        .sub-menu {
+            display: none;
+            background-color: #444;
+            border-radius: 1vh;
+            padding: 5px;
+        }
+
+        .sub-menu-option {
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+            background-color: #555;
+            padding: 8px;
+            border-radius: 1vh;
+            width: 9.0105vh;
+            margin-top: .3vh;
+            margin-bottom: .3vh;
+        }
+
+        .sub-menu-option:hover {
+            background-image: linear-gradient(to right, #ff8a00, #e52e71, #fa3939);
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
-    
 </head>
 
+<img src="./logo.png" alt="Favicon">
+    
 <body>
     <div class="menu-bar">
         <div class="top-options">
-            <div class="menu-option">Home</div>
-            <div class="menu-option">Tools</div>
-            <div class="menu-option">Soon...</div>
+            <div class="logo-container">
+                <a href="http://colur.org">
+                    <img src="./logo.png" alt="Favicon">
+                </a>
+            </div>
+            <div class="menu-option tools-option">
+                Tools
+                <div class="sub-menu">
+                    <div class="sub-menu-option" onclick="toggleRGBVisibility()">Toggle RGB</div>
+                    <div class="sub-menu-option" onclick="toggleHEXVisibility()">Toggle HEX</div>
+                </div>
+            </div>
+            <div class="menu-option">Colors</div>
+            
+            <!-- <ul>
+                <li><a href="#">Main link</a>
+                    <ul>
+                        <li><a href="#">Sublink</a></li>
+                        <li><a href="#">Sublink</a></li>
+                        <li><a href="#">Sublink</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Main link</a></li>
+                <li><a href="#">Main link</a></li>
+            </ul> -->
+
         </div>
         <div class="bottom-options">
+            <div class="menu-option">About</div>
+            <div class="menu-option">Features</div>
             <div class="menu-option">Contact</div>
-            <div class="logo-container">
-                <img src="./logo.png"                    
-                    alt="Favicon">
-            </div>
         </div>
     </div>
     <div class="content">
@@ -256,8 +327,8 @@
                     <div id="name-value"></div>
                 </div>
                 <div id="clock"></div>
-                <div id="rgb-value"></div>
-                <div id="hex-value"></div>
+                <div id="rgb-value" class="hidden"></div>
+                <div id="hex-value" class="hidden"></div>
             </div>
         </div>
         <div class="bottom-banner">
@@ -267,8 +338,7 @@
             <div id="color-change-timer"></div>
         </div>
     <script src="./colorList.js"></script>
-    <script 
-        src="./colorFunction.js"></script>
+    <script src="./colorFunction.js"></script>
     <script>
             const square = document.querySelector('.color-square');
             const rgbValueElement = document.getElementById('rgb-value');
@@ -344,6 +414,15 @@
                 const hour = now.getHours();
                 const hourDegrees = ((hour / 12) * 360) + ((mins / 60) * 30) + 90;
                 hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+            }
+
+            function toggleRGBVisibility() {
+                const rgbValueElement = document.getElementById('rgb-value');
+                rgbValueElement.classList.toggle('hidden');
+            }
+            function toggleHEXVisibility() {
+                const rgbValueElement = document.getElementById('hex-value');
+                rgbValueElement.classList.toggle('hidden');
             }
 
             setInterval(changeColor, 50); // Change every .05 second
