@@ -1,6 +1,3 @@
-// rgbFunc-Standard192UDV1-1.js
-// renamed to colorFunction.js for clarity
-
 function changeColor() {
     const now = new Date();
     const hours = now.getHours();
@@ -10,8 +7,13 @@ function changeColor() {
 
     let red, green, blue;
 
-    let rgbLow = 40; // 192
-    let rgbHigh = 155; // 255
+    let userRGBLow = 40;
+    let userRGBHigh = 155;
+    userRGBLow = document.getElementById('rgbLowSlider').value; // Default value for RGB Low
+    userRGBHigh = document.getElementById('rgbHighSlider').value; // Default value for RGB High
+
+    let rgbLow = parseInt(userRGBLow);
+    let rgbHigh = parseInt(userRGBHigh);
     let rgbMultiplier = ((rgbHigh + 1) - rgbLow);
 
     if ((hours >= 0 && hours < 2) || (hours >= 12 && hours < 14)) {
@@ -35,7 +37,7 @@ function changeColor() {
         green = rgbHigh;
         blue = Math.round(((1 - (((hours % 2) * 3600) + (minutes * 60) + seconds) / 7200) * rgbMultiplier) + rgbLow);
     } else {
-        red = Math.round((((((hours % 2) * 3600) + (minutes * 60) + seconds) / 7200) * rgbMultiplier) +rgbLow);
+        red = Math.round((((((hours % 2) * 3600) + (minutes * 60) + seconds) / 7200) * rgbMultiplier) + rgbLow);
         green = rgbHigh;
         blue = rgbLow;
     }
