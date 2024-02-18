@@ -443,6 +443,10 @@
             left: 100%;
             z-index: 1;
         }
+
+        .slider-label {
+            color: white;
+        }
     </style>
 </head>
 
@@ -508,8 +512,8 @@
         </div>
         <div class="features-section">
             <h1>Colur</h1>
-            <p>Here, you will soon be able to choose your own color wheels</p>
-            <p>and edit your own color gradients</p>
+            <p>Choose your own color gradient wheels</p>
+            <p>Throughout the day, the time will gradually shift between these colors</p>
             </p>
         </div>
     <script src="./colorList.js"></script>
@@ -519,6 +523,8 @@
             const rgbValueElement = document.getElementById('rgb-value');
             const hexValueElement = document.getElementById('hex-value');
             const nameValueElement = document.getElementById('name-value');
+
+            firstTimeCounter = 0;
 
             let currentColor = [255, 255, 255];
             let lastColorChangeTime = new Date();
@@ -639,6 +645,69 @@
                 document.querySelector('.features-section').style.display = 'flex';
             }
 
+            const rgbHighSlider = document.createElement('input');
+            rgbHighSlider.type = 'range';
+            rgbHighSlider.min = 0;
+            rgbHighSlider.max = 255;
+            rgbHighSlider.value = 155;
+            rgbHighSlider.classList.add('slider');
+            rgbHighSlider.id = 'rgbHighSlider';
+            const rgbLowSlider = document.createElement('input');
+            rgbLowSlider.type = 'range';
+            rgbLowSlider.min = 0;
+            rgbLowSlider.max = 255;
+            rgbLowSlider.value = 40;
+            rgbLowSlider.classList.add('slider');
+            rgbLowSlider.id = 'rgbLowSlider';
+            const rgbHighLabel = document.createElement('span');
+            const rgbLowLabel = document.createElement('span');
+
+            function createRGBSliders() {
+                if (firstTimeCounter == 0) {
+                    // Create and display RGB sliders
+                    const featuresSection = document.querySelector('.features-section');
+
+                    // Create RGB High slider
+                    featuresSection.appendChild(rgbHighSlider);
+                    rgbHighLabel.classList.add('slider-label');
+                    featuresSection.appendChild(rgbHighLabel);
+
+                    // Event listener for RGB High slider
+                    rgbHighSlider.addEventListener('input', function () {
+                        rgbHighLabel.textContent = `RGB High: ${this.value}`;
+                    });
+
+                    // Create RGB Low slider
+                    featuresSection.appendChild(rgbLowSlider);
+                    rgbLowLabel.classList.add('slider-label');
+                    featuresSection.appendChild(rgbLowLabel);
+
+                    // Event listener for RGB Low slider
+                    rgbLowSlider.addEventListener('input', function () {
+                        rgbLowLabel.textContent = `RGB Low: ${this.value}`;
+                    });
+
+                    rgbHighLabel.textContent = `RGB High: ${rgbHighSlider.value}`;
+                    rgbLowLabel.textContent = `RGB Low: ${rgbLowSlider.value}`;
+
+                    firstTimeCounter = 1;
+                }
+                else {
+                    // Event listener for RGB High slider
+                    rgbHighSlider.addEventListener('input', function () {
+                        rgbHighLabel.textContent = `RGB High: ${this.value}`;
+                    });
+
+                    // Event listener for RGB Low slider
+                    rgbLowSlider.addEventListener('input', function () {
+                        rgbLowLabel.textContent = `RGB Low: ${this.value}`;
+                    });
+
+                    // Initialize labels with default values
+                    rgbHighLabel.textContent = `RGB High: ${rgbHighSlider.value}`;
+                    rgbLowLabel.textContent = `RGB Low: ${rgbLowSlider.value}`;
+                }
+            }
 
             function goToHome() {
                 document.querySelector('.top-content').style.display = 'flex';
@@ -653,11 +722,15 @@
             }
 
             setInterval(changeColor, 50); // Change every .05 second
-            setInterval(updateClock, 50); // Change every .05 second
-            setInterval(updateColorChangeTimer, 50); // Change every .05 second
-            setInterval(setAnalogClock, 50); // Change every .05 second
+            setInterval(updateClock, 50);
+            setInterval(updateColorChangeTimer, 50);
+            setInterval(setAnalogClock, 50);
+            createRGBSliders();
+            setInterval(createRGBSliders, 50);
             setAnalogClock();
             updateClock();
         </script>
+        </main>
 </body>
+
 </html>
