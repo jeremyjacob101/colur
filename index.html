@@ -767,6 +767,12 @@
                 rgbCircleLow = parseInt(document.getElementById('rgbLowSlider').value);
                 rgbCircleHigh = parseInt(document.getElementById('rgbHighSlider').value);
 
+                if (rgbCircleLow > rgbCircleHigh) {
+                    rgbCircleTemp = rgbCircleLow;
+                    rgbCircleLow = rgbCircleHigh;
+                    rgbCircleHigh = rgbCircleTemp;
+                }
+                
                 yellowColor = [rgbCircleHigh, rgbCircleHigh, rgbCircleLow];
                 redColor = [rgbCircleHigh, rgbCircleLow, rgbCircleLow];
                 pinkColor = [rgbCircleHigh, rgbCircleLow, rgbCircleHigh];
