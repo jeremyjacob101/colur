@@ -13,6 +13,12 @@ function changeColor() {
     let rgbLow = parseInt(userRGBLow);
     let rgbHigh = parseInt(userRGBHigh);
 
+    if (rgbLow > rgbHigh) {
+        rgbTemp = rgbLow;
+        rgbLow = rgbHigh;
+        rgbHigh = rgbTemp;
+    }
+
     // Update color circle's RGB values
     rgbCircleLow = rgbLow;
     rgbCircleHigh = rgbHigh;
