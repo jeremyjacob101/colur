@@ -7,13 +7,16 @@ function changeColor() {
 
     let red, green, blue;
 
-    let userRGBLow = 40;
-    let userRGBHigh = 155;
     userRGBLow = document.getElementById('rgbLowSlider').value; // Default value for RGB Low
     userRGBHigh = document.getElementById('rgbHighSlider').value; // Default value for RGB High
 
     let rgbLow = parseInt(userRGBLow);
     let rgbHigh = parseInt(userRGBHigh);
+
+    // Update color circle's RGB values
+    rgbCircleLow = rgbLow;
+    rgbCircleHigh = rgbHigh;
+
     let rgbMultiplier = ((rgbHigh + 1) - rgbLow);
 
     if ((hours >= 0 && hours < 2) || (hours >= 12 && hours < 14)) {
