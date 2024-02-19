@@ -447,6 +447,15 @@
         .slider-label {
             color: white;
         }
+
+        .color-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin-top: 20px;
+            border: 2px solid #000;
+        }
     </style>
 </head>
 
@@ -515,16 +524,27 @@
             <p>Choose your own color gradient wheels</p>
             <p>Throughout the day, the time will gradually shift between these colors</p>
             </p>
+            <div class="color-circle"></div> <!-- New div for the circle -->
+            </p>
+            <button id="resetButton">Reset Sliders</button> <!-- Reset button -->
+            </p>
         </div>
     <script src="./colorList.js"></script>
     <script src="./colorFunction.js"></script>
-    <script>
+        <script>
             const square = document.querySelector('.color-square');
             const rgbValueElement = document.getElementById('rgb-value');
             const hexValueElement = document.getElementById('hex-value');
             const nameValueElement = document.getElementById('name-value');
 
+            SETHERERGBLOW = 40;
+            SETHERERGBHIGH = 155;
+
+            let userRGBLow = SETHERERGBLOW;
+            let userRGBHigh = SETHERERGBHIGH;
+
             firstTimeCounter = 0;
+            firstTimeCounter2 = 0;
 
             let currentColor = [255, 255, 255];
             let lastColorChangeTime = new Date();
@@ -649,14 +669,14 @@
             rgbHighSlider.type = 'range';
             rgbHighSlider.min = 0;
             rgbHighSlider.max = 255;
-            rgbHighSlider.value = 155;
+            rgbHighSlider.value = SETHERERGBHIGH;
             rgbHighSlider.classList.add('slider');
             rgbHighSlider.id = 'rgbHighSlider';
             const rgbLowSlider = document.createElement('input');
             rgbLowSlider.type = 'range';
             rgbLowSlider.min = 0;
             rgbLowSlider.max = 255;
-            rgbLowSlider.value = 40;
+            rgbLowSlider.value = SETHERERGBLOW;
             rgbLowSlider.classList.add('slider');
             rgbLowSlider.id = 'rgbLowSlider';
             const rgbHighLabel = document.createElement('span');
@@ -721,12 +741,103 @@
                 hexValueElement.classList.add('hidden');
             }
 
+            const circling = document.querySelector('.color-circle');
+
+            let rgbCircleLow = userRGBLow; // 100 // ** 30
+            let rgbCircleHigh = userRGBHigh; // 155 // ** 224
+
+            let yellowColor = [rgbCircleHigh, rgbCircleHigh, rgbCircleLow];
+            let redColor = [rgbCircleHigh, rgbCircleLow, rgbCircleLow];
+            let pinkColor = [rgbCircleHigh, rgbCircleLow, rgbCircleHigh];
+            let blueColor = [rgbCircleLow, rgbCircleLow, rgbCircleHigh];
+            let tealColor = [rgbCircleLow, rgbCircleHigh, rgbCircleHigh];
+            let greenColor = [rgbCircleLow, rgbCircleHigh, rgbCircleLow];
+
+            let circlingColor = [...yellowColor];
+            let isTransitioningToRed = true;
+            let isTransitioningToPink = false;
+            let isTransitioningToBlue = false;
+            let isTransitioningToTeal = false;
+            let isTransitioningToGreen = false;
+            let isTransitioningToYellow = false;
+
+            function initializeColorCircle() {
+                // rgbCircleLow = userRGBLow;
+                // rgbCircleHigh = userRGBHigh;
+                rgbCircleLow = parseInt(document.getElementById('rgbLowSlider').value);
+                rgbCircleHigh = parseInt(document.getElementById('rgbHighSlider').value);
+
+                yellowColor = [rgbCircleHigh, rgbCircleHigh, rgbCircleLow];
+                redColor = [rgbCircleHigh, rgbCircleLow, rgbCircleLow];
+                pinkColor = [rgbCircleHigh, rgbCircleLow, rgbCircleHigh];
+                blueColor = [rgbCircleLow, rgbCircleLow, rgbCircleHigh];
+                tealColor = [rgbCircleLow, rgbCircleHigh, rgbCircleHigh];
+                greenColor = [rgbCircleLow, rgbCircleHigh, rgbCircleLow];
+
+                circling.style.backgroundColor = `rgb(${circlingColor.join(',')})`;
+
+                if (isTransitioningToRed) {
+                    circlingColor[1]--;
+                    if (circlingColor[1] <= redColor[1]) {
+                        isTransitioningToRed = false;
+                        isTransitioningToPink = true;
+                    }
+                } else if (isTransitioningToPink) {
+                    circlingColor[2]++;
+                    if (circlingColor[2] >= pinkColor[2]) {
+                        isTransitioningToPink = false;
+                        isTransitioningToBlue = true;
+                    }
+                } else if (isTransitioningToBlue) {
+                    circlingColor[0]--;
+                    if (circlingColor[0] <= blueColor[0]) {
+                        isTransitioningToBlue = false;
+                        isTransitioningToTeal = true;
+                    }
+                } else if (isTransitioningToTeal) {
+                    circlingColor[1]++;
+                    if (circlingColor[1] >= tealColor[1]) {
+                        isTransitioningToTeal = false;
+                        isTransitioningToGreen = true;
+                    }
+                } else if (isTransitioningToGreen) {
+                    circlingColor[2]--;
+                    if (circlingColor[2] <= greenColor[2]) {
+                        isTransitioningToGreen = false;
+                        isTransitioningToYellow = true;
+                    }
+                } else if (isTransitioningToYellow) {
+                    circlingColor[0]++;
+                    if (circlingColor[0] >= yellowColor[0]) {
+                        isTransitioningToYellow = false;
+                        isTransitioningToRed = true;
+                    }
+                }
+
+                circling.style.backgroundColor = `rgb(${circlingColor.join(',')})`;
+            }
+
+            // Get the reset button element
+            const resetButton = document.getElementById('resetButton');
+
+            // Add an event listener to the reset button
+            resetButton.addEventListener('click', function () {
+                // Set the slider values to their default values
+                document.getElementById('rgbLowSlider').value = SETHERERGBLOW;
+                document.getElementById('rgbHighSlider').value = SETHERERGBHIGH;
+
+                // Update the labels
+                document.querySelector('.slider-label').textContent = `RGB High: ${SETHERERGBHIGH}`;
+                document.querySelectorAll('.slider-label')[1].textContent = `RGB Low: ${SETHERERGBLOW}`;
+            });
+
             setInterval(changeColor, 50); // Change every .05 second
             setInterval(updateClock, 50);
             setInterval(updateColorChangeTimer, 50);
             setInterval(setAnalogClock, 50);
             createRGBSliders();
             setInterval(createRGBSliders, 50);
+            setInterval(initializeColorCircle, 5)
             setAnalogClock();
             updateClock();
         </script>
