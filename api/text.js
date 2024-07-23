@@ -2,7 +2,7 @@
 
 // api/text.js
 
-const storedText = ' JJ -- This is the manually set text you want to retrieve.';
+const storedText = 'JJ -- This is the manually set text you want to retrieve.';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
