@@ -30,7 +30,6 @@
             <div class="menu-option" onclick="showFeaturesSection()">Features</div>
         <!-- --> 
             <button class="menu-option" id="testingJSbutton">CTF</button>
-            <p id="outputText"></p>
         <!-- -->            
         </div>
         <div class="bottom-options">
@@ -48,50 +47,51 @@
                         <div class="hand min-hand"></div>
                         <div class="hand second-hand"></div>
                     </div>
-                    <div id="name-value"></div>
+                <div id="name-value"></div>
                 </div>
-                <div id="clock"></div>
-                <div id="rgb-value" class="hidden"></div>
-                <div id="hex-value" class="hidden"></div>
+            <div id="clock"></div>
+            <div id="rgb-value" class="hidden"></div>
+            <div id="hex-value" class="hidden"></div>
             </div>
         </div>
-        <div class="bottom-banner">
-            <div class="copyright-notice">
-                &copy; 2024 ColurTime &ndash; All rights reserved
-            </div>
-            <div id="color-change-timer"></div>
+    <div class="bottom-banner">
+        <div class="copyright-notice">
+            &copy; 2024 ColurTime &ndash; All rights reserved
         </div>
-        <div class="about-section">
-            <h1>Colur</h1>
-            <p>We need to move past numbered time</p>
-            <p>A new way to see the world</p>
-            <p>Welcome to ColurTime</p>
-        </div>
-        <div class="contact-section">
-            <h1>Colur</h1>
-            <p>Have a feature request?</p>
-            <p>Want to contact the team?</p>
-            <p></p>
-            <p>Soon you'll be able to leave feedback!</p>
-        </div>
-        <div class="features-section">
-            <h1>Colur</h1>
-            <p>Choose your own color gradient wheels</p>
-            <p>Throughout the day, the time will gradually shift between these colors</p>
-            </p>
-            <div class="color-circle"></div> <!-- New div for the circle -->
-            </p>
-            <button id="resetButton">Reset Sliders</button> <!-- Reset button -->
-            </p>
-        </div>
-<!--         <div class="movies-section">
-            <h1>Letterboxd Film Pace</h1>
-            <p>Enter your letterboxd username: </p>
-            <input type="text" id="userInput" placeholder="Enter your username">
-            <button onclick="checkMoviesWatched()">Check Movies Watched</button>
-            <p>Number of movies watched this year so far:</p>
-            <p id="numberOfMoviesWatch"></p>
-        </div>
+        <div id="color-change-timer"></div>
+    </div>
+    <div class="about-section">
+        <h1>Colur</h1>
+        <p>We need to move past numbered time</p>
+        <p>A new way to see the world</p>
+        <p>Welcome to ColurTime</p>
+    </div>
+    <div class="contact-section">
+        <h1>Colur</h1>
+        <p>Have a feature request?</p>
+        <p>Want to contact the team?</p>
+        <p></p>
+        <p>Soon you'll be able to leave feedback!</p>
+        <p id="outputText"></p>
+    </div>
+    <div class="features-section">
+        <h1>Colur</h1>
+        <p>Choose your own color gradient wheels</p>
+        <p>Throughout the day, the time will gradually shift between these colors</p>
+        </p>
+        <div class="color-circle"></div> <!-- New div for the circle -->
+        </p>
+        <button id="resetButton">Reset Sliders</button> <!-- Reset button -->
+        </p>
+    </div>
+<!--    <div class="movies-section">
+        <h1>Letterboxd Film Pace</h1>
+        <p>Enter your letterboxd username: </p>
+        <input type="text" id="userInput" placeholder="Enter your username">
+        <button onclick="checkMoviesWatched()">Check Movies Watched</button>
+        <p>Number of movies watched this year so far:</p>
+        <p id="numberOfMoviesWatch"></p>
+    </div>
 
     <script>
         function checkMoviesWatched() {
