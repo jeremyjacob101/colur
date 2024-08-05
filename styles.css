@@ -437,6 +437,52 @@ button.menu-option:hover {
     z-index: 1;
 }
 
+.movies-section {
+    /* display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto; */
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    z-index: 1;
+}
+
+.movies-section h1 {
+    /* margin-bottom: 40px;
+    margin-top: 50px; */
+    font-size: 75px;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to right, #ff8a00, #e52e71, #fa3939);
+    margin-bottom: 25px;
+    z-index: 1;
+}
+
+.movies-section p {
+    /* margin-top: -15px;
+    font-size: 20px; */
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    z-index: 1;
+}
+
 .sub-menu {
     display: none;
     background-color: #444;
