@@ -18,7 +18,7 @@
                 </a>
             </div>
             <div class="menu-option" onclick="goToHome()">Home</div>
-            <div class="menu-option" onclick="goToHome()">Movies</div>
+            <div class="menu-option" onclick="showMovieSection()">Movies</div>
             <div class="menu-option tools-option" onclick="toggleSubMenu()" onmouseover="showSubMenu()"
                 onmouseleave="hideSubMenu()">
                 Tools
@@ -60,6 +60,10 @@
                 &copy; 2024 ColurTime &ndash; All rights reserved
             </div>
             <div id="color-change-timer"></div>
+        </div>
+        <div class="movies-section">
+            <h1>Colur</h1>
+            <p>Enter movie stuff here</p>
         </div>
         <div class="about-section">
             <h1>Colur</h1>
@@ -199,9 +203,19 @@
                 subMenu.classList.remove('show');
             }
 
+            function showMovieSection() {
+                document.querySelector('.top-content').style.display = 'none';
+                document.querySelector('.bottom-banner').style.display = 'none';
+                document.querySelector('.movie-section').style.display = 'flex';
+                document.querySelector('.about-section').style.display = 'none';
+                document.querySelector('.contact-section').style.display = 'none';
+                document.querySelector('.features-section').style.display = 'none';
+            }
+            
             function showAboutSection() {
                 document.querySelector('.top-content').style.display = 'none';
                 document.querySelector('.bottom-banner').style.display = 'none';
+                document.querySelector('.movie-section').style.display = 'none';
                 document.querySelector('.about-section').style.display = 'flex';
                 document.querySelector('.contact-section').style.display = 'none';
                 document.querySelector('.features-section').style.display = 'none';
@@ -210,6 +224,7 @@
             function showContactSection() {
                 document.querySelector('.top-content').style.display = 'none';
                 document.querySelector('.bottom-banner').style.display = 'none';
+                document.querySelector('.movie-section').style.display = 'none';
                 document.querySelector('.about-section').style.display = 'none';
                 document.querySelector('.contact-section').style.display = 'flex';
                 document.querySelector('.features-section').style.display = 'none';
@@ -218,6 +233,7 @@
             function showFeaturesSection() {
                 document.querySelector('.top-content').style.display = 'none';
                 document.querySelector('.bottom-banner').style.display = 'none';
+                document.querySelector('.movie-section').style.display = 'none';
                 document.querySelector('.about-section').style.display = 'none';
                 document.querySelector('.contact-section').style.display = 'none';
                 document.querySelector('.features-section').style.display = 'flex';
@@ -290,6 +306,7 @@
             function goToHome() {
                 document.querySelector('.top-content').style.display = 'flex';
                 document.querySelector('.bottom-banner').style.display = 'flex';
+                document.querySelector('.movie-section').style.display = 'none';
                 document.querySelector('.about-section').style.display = 'none';
                 document.querySelector('.contact-section').style.display = 'none';
                 document.querySelector('.features-section').style.display = 'none';
