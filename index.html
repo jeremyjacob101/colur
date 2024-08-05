@@ -26,7 +26,7 @@
                     <div class="sub-menu-option" onclick="toggleHEXVisibility()">Toggle HEX</div>
                 </div>
             </div>
-            <div class="menu-option" onclick="showMoviesSection()">Movies</div>
+<!--             <div class="menu-option" onclick="showMoviesSection()">Movies</div> -->
             <div class="menu-option" onclick="showFeaturesSection()">Features</div>
         <!-- --> 
             <button class="menu-option" id="testingJSbutton">CTF</button>
@@ -84,7 +84,7 @@
             <button id="resetButton">Reset Sliders</button> <!-- Reset button -->
             </p>
         </div>
-        <div class="movies-section">
+<!--         <div class="movies-section">
             <h1>Letterboxd Film Pace</h1>
             <p>Enter your letterboxd username: </p>
             <input type="text" id="userInput" placeholder="Enter your username">
@@ -122,7 +122,7 @@
                 alert("An error occurred while fetching the data.");
             });
         }
-    </script>
+    </script> -->
 
     <script src="./colorList.js"></script>
 <!-- -->
@@ -239,19 +239,19 @@
                 subMenu.classList.remove('show');
             }
 
-            function showMoviesSection() {
-                document.querySelector('.top-content').style.display = 'none';
-                document.querySelector('.bottom-banner').style.display = 'none';
-                document.querySelector('.movies-section').style.display = 'flex';
-                document.querySelector('.about-section').style.display = 'none';
-                document.querySelector('.contact-section').style.display = 'none';
-                document.querySelector('.features-section').style.display = 'none';
-            }
+            // function showMoviesSection() {
+            //     document.querySelector('.top-content').style.display = 'none';
+            //     document.querySelector('.bottom-banner').style.display = 'none';
+            //     // document.querySelector('.movies-section').style.display = 'flex';
+            //     document.querySelector('.about-section').style.display = 'none';
+            //     document.querySelector('.contact-section').style.display = 'none';
+            //     document.querySelector('.features-section').style.display = 'none';
+            // }
             
             function showAboutSection() {
                 document.querySelector('.top-content').style.display = 'none';
                 document.querySelector('.bottom-banner').style.display = 'none';
-                document.querySelector('.movies-section').style.display = 'none';
+                // document.querySelector('.movies-section').style.display = 'none';
                 document.querySelector('.about-section').style.display = 'flex';
                 document.querySelector('.contact-section').style.display = 'none';
                 document.querySelector('.features-section').style.display = 'none';
@@ -260,7 +260,7 @@
             function showContactSection() {
                 document.querySelector('.top-content').style.display = 'none';
                 document.querySelector('.bottom-banner').style.display = 'none';
-                document.querySelector('.movies-section').style.display = 'none';
+                // document.querySelector('.movies-section').style.display = 'none';
                 document.querySelector('.about-section').style.display = 'none';
                 document.querySelector('.contact-section').style.display = 'flex';
                 document.querySelector('.features-section').style.display = 'none';
@@ -269,7 +269,7 @@
             function showFeaturesSection() {
                 document.querySelector('.top-content').style.display = 'none';
                 document.querySelector('.bottom-banner').style.display = 'none';
-                document.querySelector('.movies-section').style.display = 'none';
+                // document.querySelector('.movies-section').style.display = 'none';
                 document.querySelector('.about-section').style.display = 'none';
                 document.querySelector('.contact-section').style.display = 'none';
                 document.querySelector('.features-section').style.display = 'flex';
@@ -342,7 +342,7 @@
             function goToHome() {
                 document.querySelector('.top-content').style.display = 'flex';
                 document.querySelector('.bottom-banner').style.display = 'flex';
-                document.querySelector('.movies-section').style.display = 'none';
+                // document.querySelector('.movies-section').style.display = 'none';
                 document.querySelector('.about-section').style.display = 'none';
                 document.querySelector('.contact-section').style.display = 'none';
                 document.querySelector('.features-section').style.display = 'none';
