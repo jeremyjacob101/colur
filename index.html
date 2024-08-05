@@ -85,9 +85,19 @@
             </p>
         </div>
         <div class="movies-section">
-            <h1>Colur</h1>
-            <p>Enter movie stuff here</p>
+            <h1>Letterboxd Film Pace</h1>
+            <p>Enter your letterboxd username: </p>
+            <input type="text" id="userInput" placeholder="Enter a number" oninput="handleUsernameInput()">
+            <p>Number of movies watched this year so far:</p>
+            <p id="numberOfMoviesWatch"></p>
         </div>
+    <script>
+        function handleUsernameInput() {
+            const inputNumber = Number(document.getElementById('userInput').value);
+            console.log('User input:', inputNumber);
+
+        }
+    </script>
     <script src="./colorList.js"></script>
 <!-- -->
     <script src="script.js"></script>
