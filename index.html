@@ -18,7 +18,6 @@
                 </a>
             </div>
             <div class="menu-option" onclick="goToHome()">Home</div>
-            <div class="menu-option" onclick="showMovieSection()">Movies</div>
             <div class="menu-option tools-option" onclick="toggleSubMenu()" onmouseover="showSubMenu()"
                 onmouseleave="hideSubMenu()">
                 Tools
@@ -27,6 +26,7 @@
                     <div class="sub-menu-option" onclick="toggleHEXVisibility()">Toggle HEX</div>
                 </div>
             </div>
+            <div class="menu-option" onclick="showMoviesSection()">Movies</div>
             <div class="menu-option" onclick="showFeaturesSection()">Features</div>
         <!-- --> 
             <button class="menu-option" id="testingJSbutton">CTF</button>
@@ -203,7 +203,7 @@
                 subMenu.classList.remove('show');
             }
 
-            function showMovieSection() {
+            function showMoviesSection() {
                 document.querySelector('.top-content').style.display = 'none';
                 document.querySelector('.bottom-banner').style.display = 'none';
                 document.querySelector('.movie-section').style.display = 'flex';
