@@ -87,51 +87,43 @@
         <div class="movies-section">
             <h1>Letterboxd Film Pace</h1>
             <p>Enter your letterboxd username: </p>
-            <input type="text" id="userUsernameInput" placeholder="Enter a number" oninput="handleUsernameInput()">
+            <input type="text" id="userInput" placeholder="Enter your username">
+            <button onclick="checkMoviesWatched()">Check Movies Watched</button>
             <p>Number of movies watched this year so far:</p>
             <p id="numberOfMoviesWatch"></p>
         </div>
+
     <script>
-        async function handleUsernameInput() {
-            const username = document.getElementById('userUsernameInput').value;
-            if (username) {
-                const url = `https://letterboxd.com/${username}/`;
-
-                try {
-                    const response = await fetch(url);
-                    const html = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-
-                    const selectors = [
-                        '#content > div > section > div > div.profile-info.-has-bio.-has-no-meta.-is-not-hq.js-profile-info > div.profile-stats.js-profile-stats > h4:nth-child(2) > a > span.value',
-                        '#content > div > section > div > div.profile-info.-has-bio.-has-meta.-is-not-hq.js-profile-info > div.profile-stats.js-profile-stats > h4:nth-child(2) > a > span.value',
-                        '#content > div > section > div > div.profile-info.-has-no-bio.-has-no-meta.-is-not-hq.js-profile-info > div > h4:nth-child(2) > a > span.value',
-                        '#content > div > section > div > div.profile-info.-has-no-bio.-has-meta.-is-not-hq.js-profile-info > div.profile-stats.js-profile-stats > h4:nth-child(2) > a > span.value'
-                    ];
-
-                    let value = null;
-
-                    for (const selector of selectors) {
-                        const valueElement = doc.querySelector(selector);
-                        if (valueElement) {
-                            value = parseInt(valueElement.textContent.replace(',', ''), 10);
-                            break;
-                        }
-                    }
-
-                    if (value !== null) {
-                        document.getElementById('numberOfMoviesWatch').textContent = value;
-                    } else {
-                        document.getElementById('numberOfMoviesWatch').textContent = 'Value not found';
-                    }
-                } catch (error) {
-                    console.error("Error fetching the URL:", error);
-                    document.getElementById('numberOfMoviesWatch').textContent = 'Error fetching data';
-                }
+        function checkMoviesWatched() {
+            const username = document.getElementById('userInput').value;
+            
+            if (username.trim() === "") {
+                alert("Please enter a username");
+                return;
             }
+    
+            fetch('http://localhost:3000/api/check-movies', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: username })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.moviesWatched !== undefined) {
+                    document.getElementById('numberOfMoviesWatched').innerText = data.moviesWatched;
+                } else {
+                    alert(data.message || "Could not retrieve movies watched count");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("An error occurred while fetching the data.");
+            });
         }
     </script>
+
     <script src="./colorList.js"></script>
 <!-- -->
     <script src="script.js"></script>
