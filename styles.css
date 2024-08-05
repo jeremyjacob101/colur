@@ -33,6 +33,26 @@ body {
     justify-content: bottom;
 }
 
+button.menu-option {
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #555;
+    border-radius: 1vh;
+    padding: 8px;
+    transition: color 0.5s ease;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.menu-option:hover {
+    background-image: linear-gradient(to right, #ff8a00, #e52e71, #fa3939);
+}
+
 .menu-option {
     color: white;
     font-size: 18px;
