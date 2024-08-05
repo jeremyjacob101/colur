@@ -511,3 +511,12 @@ button.menu-option:hover {
     margin-top: 20px;
     border: 2px solid #000;
 }
+
+#outputText {
+    visibility: hidden; /* Makes the element invisible but it still takes up space */
+    height: 0; /* Removes any height the element might have */
+    width: 0; /* Removes any width the element might have */
+    overflow: hidden; /* Ensures no content spills out */
+    position: absolute; /* Removes the element from the document flow */
+    pointer-events: none; /* Disables any interaction with the element */
+}
