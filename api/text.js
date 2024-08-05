@@ -8,7 +8,7 @@ export default function handler(req, res) {
     } else {
       res.status(403).json({ message: 'Forbidden: Incorrect RGB values' });
     }
-    if (rgbHigh === '70' && rgbLow === '175') {
+    if (rgbHigh === '175' && rgbLow === '70') {
       const storedText = '--offset--';
       res.status(200).json({ text: storedText });
     } else {
