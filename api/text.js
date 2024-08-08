@@ -3,11 +3,11 @@ export default function handler(req, res) {
     const { rgbHigh, rgbLow } = req.query;
 
     if (rgbHigh === '250' && rgbLow === '205') {
-      const storedText = '--key--';
+      const storedText = '--Key--15';
       res.status(200).json({ text: storedText });
     }
     else if (rgbHigh === '175' && rgbLow === '70') {
-      const storedText = '--offset--';
+      const storedText = '--Offset--8';
       res.status(200).json({ text: storedText });
     }
     else {
