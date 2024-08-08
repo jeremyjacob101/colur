@@ -2,12 +2,12 @@ export default function handler(req, res) {
   if (req.method === 'GET') {
     const { rgbHigh, rgbLow } = req.query;
 
-    if (rgbHigh === '250' && rgbLow === '205') {
-      const storedText = '--Key--15';
+    if (rgbHigh === '21' && rgbLow === '93') {
+      const storedText = '-Key--15-|||-Offset--8-';
       res.status(200).json({ text: storedText });
     }
-    else if (rgbHigh === '175' && rgbLow === '70') {
-      const storedText = '--Offset--8';
+    else if (rgbHigh === '93' && rgbLow === '21') {
+      const storedText = '-Key--15-|||-Offset--8-';
       res.status(200).json({ text: storedText });
     }
     else {
